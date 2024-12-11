@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  color: #000;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hero {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.heading {
+  height: 65px;
+  width: 100%;
+  background-color: rgb(40, 40, 154);
+  color: white;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.contact-form-container h1 {
+  color: #fff;
+}
+
+.contact {
+  background-color: #fff;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* Stack label, input, and error vertically */
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px; /* Space between label and input */
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #161313;
+  background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #0f2d10;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+.error-message {
+  display: none; /* Hidden initially */
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px; /* Space between input and error message */
+}
+
+.success-message {
+  color: green;
+  font-size: 1em;
+  margin-top: 10px;
+  display: none; /* Hidden initially */
+}
+
+.submit-button {
+  background-color: #402cb4;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact {
+    padding: 20px;
+  }
+
+  .hero {
+    padding: 15px;
+  }
+
+  .heading {
+    height: 65px;
+    width: 95%;
+    background-color: rgb(40, 40, 154);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+}

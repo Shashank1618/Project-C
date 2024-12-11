@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scholarships</title>
+    <!-- Added a favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/pathsphere.png">
+    <link rel="stylesheet" href="..pages/scholarships.css" />
+    <link rel="stylesheet" href="/styles/essential.css" />
+
+  </head>
+  <body>
+    <div class="gtranslate_wrapper"></div>
+    <script>
+    window.gtranslateSettings = {
+      "default_language":"en",
+      "detect_browser_language":true,
+      "wrapper_selector":".gtranslate_wrapper"
+    }
+    </script>
+    <script 
+      src="https://cdn.gtranslate.net/widgets/latest/float.js"
+      defer
+    ></script>
+    <main>
+      <section class="hero">
+        <h1>Scholarships</h1>
+
+        <p>Find scholarships that match your academic profile and needs.</p>
+      </section>
+
+      <div class="search-bar">
+        <!-- <i class="fas fa-search"></i> -->
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for scholarships..."
+          aria-label="Search Scholarships"
+          onkeyup="filterScholarships()"
+        />
+      </div>
+
+</head>
+
+
+<body>
+    <main>
+        <section class="hero">
+            <h1>Scholarships</h1>
+            <p>Find scholarships that match your academic profile and needs.</p>
+        </section>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for scholarships..." aria-label="Search Scholarships" onkeyup="filterScholarships()" />
+        </div>
+
+        <section class="scholarship-list">
+
+            <!-- Scholarship Item -->
+            <div class="scholarship-item">
+                <img src="/images/globalearth.jpg" alt="Global Student Scholarship" class="scholarship-image" />
+                <div class="scholarship-content">
+                    <h2>Global Student Scholarship</h2>
+                    <p><strong>Amount:</strong> $5,000</p>
+                    <p><strong>Eligibility:</strong> International students with a GPA above 3.0</p>
+                    <p><strong>Deadline:</strong> December 31, 2024</p>
+                    <a href="#" class="apply-btn" onclick="applyForScholarship('Global Student Scholarship')">Apply Now</a>
+                </div>
+            </div>
+            </div>
+
+            <!-- Repeat for other scholarships -->
+            <!-- STEM Excellence Scholarship -->
+            <div class="scholarship-item">
+                <img src="/images/STEM.jpg" alt="STEM Excellence Scholarship" class="scholarship-image" />
+                <div class="scholarship-content">
+                    <h2>STEM Excellence Scholarship</h2>
+                    <p><strong>Amount:</strong> $10,000</p>
+                    <p><strong>Eligibility:</strong> Students pursuing STEM majors</p>
+                    <p><strong>Deadline:</strong> March 15, 2024</p>
+                    <a href="#" class="apply-btn" onclick="applyForScholarship('STEM Excellence Scholarship')">Apply Now</a>
+
+                    <div class="like-comment-section">
+                        <div class="like-container">
+                            <button class="like-btn" onclick="toggleLike(this)">👍 Like</button>
+                            <span class="like-count">0</span> Likes
+                        </div>
+
+                        <div class="comment-section">
+                            <h3>Comments</h3>
+                            <div class="comment-list"></div>
+                            <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                            <button class="comment-btn" onclick="addComment(this)">Post Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add similar blocks for other scholarships -->
+
+        </section>
+    </main>
+
+    <script src="/scripts/componentLoader.js"></script>
+    <script>
+        prependComponent('Navbar');
+        prependComponent('Cursor');
+        appendComponent('Footer');
+        appendComponent('ChatBot');
+        waitTillComponentsLoaded();
+
+        // Like button functionality
+        function toggleLike(button) {
+            const likeCount = button.nextElementSibling;
+            let count = parseInt(likeCount.textContent);
+            count++;
+            likeCount.textContent = count;
+        }
+
+        // Comment functionality
+        function addComment(button) {
+            const commentInput = button.previousElementSibling;
+            const commentList = button.closest('.like-comment-section').querySelector('.comment-list');
+            if (commentInput.value) {
+                const comment = document.createElement('p');
+                comment.textContent = commentInput.value;
+                commentList.appendChild(comment);
+                commentInput.value = ''; // clear input after posting
+            }
+        }
+    </script>
+
+    <div class="circle-container">
+        <div class="circle"></div>
+        <!-- (rest of your circle animation code) -->
+    </div>
+
+    <style>
+        .circle {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(73, 232, 247, 0.466), rgba(141, 38, 172, 0.5));
+            transition: transform 0.1s, left 0.1s, top 0.1s;
+        }
+        
+        .circle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const coords = {
+                x: 0,
+                y: 0
+            };
+            const circles = document.querySelectorAll(".circle");
+
+            circles.forEach(function(circle) {
+                circle.x = 0;
+                circle.y = 0;
+            });
+
+            window.addEventListener("mousemove", function(e) {
+                coords.x = e.pageX;
+                coords.y = e.pageY - window.scrollY;
+            });
+
+            function animateCircles() {
+                let x = coords.x;
+                let y = coords.y;
+
+                circles.forEach(function(circle, index) {
+                    circle.style.left = `${x - 12}px`;
+                    circle.style.top = `${y - 12}px`;
+                    circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+
+                    const nextCircle = circles[index + 1] || circles[0];
+                    circle.x = x;
+                    circle.y = y;
+
+                    x += (nextCircle.x - x) * 0.3;
+                    y += (nextCircle.y - y) * 0.3;
+                });
+
+                requestAnimationFrame(animateCircles);
+            }
+
+            animateCircles();
+        });
+    </script>
+    <button id="scrollToTopBtn" class="scroll-top" aria-label="Scroll to top">
+        <div class="scroll-top-icon">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+        <svg class="progress-ring" width="60" height="60">
+            <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="4" fill="transparent" r="28" cx="30"
+                cy="30"></circle>
+        </svg>
+    </button>
+    <style>
+        .scroll-top {
+            position: fixed;
+            right: 1.6%;
+            background: linear-gradient(100deg, #1ca6f0, #3c7aff, #05deff);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 69, 159, 0.4);
+            overflow: visible;
+            z-index: 10;
+            bottom: 75px;
+            /* Ensure button is on top */
+        }
+    
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    
+        .scroll-top:hover {
+            transform: scale(1.1);
+            /* Subtle scaling instead of expanding */
+            box-shadow: 0 8px 20px rgba(255, 69, 159, 0.6);
+            /* Slightly larger shadow */
+        }
+    
+        .scroll-top:active {
+            transform: scale(1.05);
+            /* Minor scale reduction on click */
+        }
+    
+        .scroll-top-icon {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+    
+        .scroll-top:hover .scroll-top-icon {
+            transform: translateY(-3px);
+        }
+    
+        /* Progress Ring Styling */
+        .progress-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+            /* To start from the top */
+        }
+    
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform-origin: 50% 50%;
+        }
+    
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 5px 15px rgba(255, 69, 159, 0.4);
+            }
+    
+            50% {
+                box-shadow: 0 5px 15px rgba(255, 69, 159, 0.7);
+            }
+    
+            100% {
+                box-shadow: 0 5px 15px rgba(255, 69, 159, 0.4);
+            }
+        }
+    
+        .scroll-top:hover {
+            animation: pulse 1.5s infinite;
+        }
+    
+        .scroll-top.show {
+            animation: none;
+            /* No animation when showing the button */
+        }
+    
+        .scroll-top.show:hover {
+            animation: pulse 1.5s infinite;
+            /* Pulse on hover */
+        }
+    </style>
+    <script>
+        // Get the button
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        const progressCircle = document.querySelector(".progress-ring__circle");
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+    
+        // Set the circle progress properties
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+    
+        // Function to show or hide the button based on scroll position
+        function toggleScrollButton() {
+            if (window.scrollY > 100) {
+                scrollToTopBtn.classList.add("show");
+            } else {
+                scrollToTopBtn.classList.remove("show");
+            }
+        }
+    
+        // Function to set the scroll progress on the button ring
+        function setProgress(percent) {
+            const offset = circumference - (percent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+    
+        // Listen for scroll events to update button visibility and progress
+        window.addEventListener("scroll", () => {
+            toggleScrollButton();
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            setProgress(scrollPercent);
+        });
+    
+        // Smooth scroll to top when the button is clicked
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+      </script>
+</body>
+
+</html>

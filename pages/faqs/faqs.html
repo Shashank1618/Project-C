@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PathSphere | FAQs</title>
+    <link rel="icon" type="image/x-icon" href="/images/pathsphere.png" />
+    <link rel="stylesheet" href="faqs.css" />
+    <link rel="stylesheet" href="/styles/essential.css" />
+  </head>
+  <body>
+    <button id="scrollToTopBtn" class="scroll-top" aria-label="Scroll to top">
+      <div class="scroll-top-icon">
+          <i class="fa-solid fa-arrow-up"></i>
+      </div>
+      <svg class="progress-ring" width="60" height="60">
+          <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="4" fill="transparent" r="28" cx="30"
+              cy="30"></circle>
+      </svg>
+  </button>
+  <style>
+      .scroll-top {
+          position: fixed;
+          right: 1.6%;
+          background: linear-gradient(100deg, #1ca6f0, #3c7aff, #05deff);
+          color: white;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 5px 15px rgba(255, 69, 159, 0.4);
+          overflow: visible;
+          z-index: 10;
+          bottom: 75px;
+          /* Ensure button is on top */
+      }
+  
+      .scroll-top.show {
+          opacity: 1;
+          visibility: visible;
+      }
+  
+      .scroll-top:hover {
+          transform: scale(1.1);
+          /* Subtle scaling instead of expanding */
+          box-shadow: 0 8px 20px rgba(255, 69, 159, 0.6);
+          /* Slightly larger shadow */
+      }
+  
+      .scroll-top:active {
+          transform: scale(1.05);
+          /* Minor scale reduction on click */
+      }
+  
+      .scroll-top-icon {
+          position: relative;
+          z-index: 2;
+          transition: transform 0.3s ease;
+      }
+  
+      .scroll-top:hover .scroll-top-icon {
+          transform: translateY(-3px);
+      }
+  
+      /* Progress Ring Styling */
+      .progress-ring {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transform: rotate(-90deg);
+          /* To start from the top */
+      }
+  
+      .progress-ring__circle {
+          transition: stroke-dashoffset 0.35s;
+          transform-origin: 50% 50%;
+      }
+  
+      /* Pulse Animation */
+      @keyframes pulse {
+          0% {
+              box-shadow: 0 5px 15px rgba(255, 69, 159, 0.4);
+          }
+  
+          50% {
+              box-shadow: 0 5px 15px rgba(255, 69, 159, 0.7);
+          }
+  
+          100% {
+              box-shadow: 0 5px 15px rgba(255, 69, 159, 0.4);
+          }
+      }
+  
+      .scroll-top:hover {
+          animation: pulse 1.5s infinite;
+      }
+  
+      .scroll-top.show {
+          animation: none;
+          /* No animation when showing the button */
+      }
+  
+      .scroll-top.show:hover {
+          animation: pulse 1.5s infinite;
+          /* Pulse on hover */
+      }
+  </style>
+  <script>
+      // Get the button
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+      const progressCircle = document.querySelector(".progress-ring__circle");
+      const radius = progressCircle.r.baseVal.value;
+      const circumference = 2 * Math.PI * radius;
+  
+      // Set the circle progress properties
+      progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+      progressCircle.style.strokeDashoffset = circumference;
+  
+      // Function to show or hide the button based on scroll position
+      function toggleScrollButton() {
+          if (window.scrollY > 100) {
+              scrollToTopBtn.classList.add("show");
+          } else {
+              scrollToTopBtn.classList.remove("show");
+          }
+      }
+  
+      // Function to set the scroll progress on the button ring
+      function setProgress(percent) {
+          const offset = circumference - (percent / 100) * circumference;
+          progressCircle.style.strokeDashoffset = offset;
+      }
+  
+      // Listen for scroll events to update button visibility and progress
+      window.addEventListener("scroll", () => {
+          toggleScrollButton();
+          const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+          setProgress(scrollPercent);
+      });
+  
+      // Smooth scroll to top when the button is clicked
+      scrollToTopBtn.addEventListener("click", () => {
+          window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+          });
+      });
+    </script>
+      <div class="gtranslate_wrapper"></div>
+      <script>
+      window.gtranslateSettings = {
+        "default_language":"en",
+        "detect_browser_language":true,
+        "wrapper_selector":".gtranslate_wrapper"
+      }
+      </script>
+      <script 
+        src="https://cdn.gtranslate.net/widgets/latest/float.js"
+        defer
+      ></script>
+      <section class="process">
+        <div class="process__container">
+          <div class="process__intro intro">
+            <h2 class="process__title title">-  Frequently Asked Questions  -</h2>
+          </div>
+          <div class="process__accordions">
+            <ul class="accordions__list">
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">01</span>
+                  <span class="accordions__title">What is PathSphere?</span>
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    PathSphere is an online platform offering resources for
+                    students and professionals, including scholarships, jobs,
+                    and a discussion forum.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">02</span>
+                  <span class="accordions__title"
+                    >How can I find scholarships on PathSphere?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    Visit the Scholarships page to browse and apply for
+                    <a href="scholarships.html">Scholarships</a>
+                    tailored to your academic performance and needs.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">03</span>
+                  <span class="accordions__title">
+                    Are job listings available for all fields?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    PathSphere offers job listings primarily focused on
+                    education-related positions, but we are continually
+                    expanding our database to include more opportunities.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">04</span>
+                  <span class="accordions__title">
+                    How can I join the forum?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    You can access the forum by clicking the
+                    <a href="forum.html">Forum</a> link in the navigation bar.
+                    Sign up to participate in discussions and connect with
+                    others.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">05</span>
+                  <span class="accordions__title">
+                    How can I contact PathSphere for support?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    You can reach out to our support team by visiting the
+                    <a href="contact.html">Contact Us</a> page and filling out
+                    the form, or by emailing us at support@pathsphere.com.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">06</span>
+                  <span class="accordions__title">
+                    What Services Does PathSphere Offer?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    PathSphere offers a wide range of services, including a
+                    comprehensive scholarship search engine, job listings
+                    tailored to students and professionals, a discussion forum,
+                    and resources to guide career development.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">07</span>
+                  <span class="accordions__title">
+                    Can I Apply For Multiple Scholarships At Once?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    Yes, PathSphere allows you to apply for multiple
+                    scholarships, but you must complete each scholarship's
+                    unique application process. Be sure to check individual
+                    deadlines and requirements.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">08</span>
+                  <span class="accordions__title">
+                    What Is The Eligibility Criteria For Jobs Listed?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    The eligibility criteria for jobs vary by position. Each job
+                    listing provides specific qualifications, such as
+                    educational background, skills, and experience requirements.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">09</span>
+                  <span class="accordions__title"
+                    >Are There Any Fees For Using PathSphere?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    No, PathSphere is free to use. You can access all
+                    scholarship searches, job listings, and resources without
+                    any charge.
+                  </p>
+                </div>
+              </li>
+              <li class="accordions__item">
+                <button class="accordions__control" aria-expanded="false">
+                  <span class="accordions__number">10</span>
+                  <span class="accordions__title">
+                    Is PathSphere Available Internationally?</span
+                  >
+                  <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true">
+                  <p>
+                    Yes, PathSphere is accessible globally, and many of the
+                    scholarships and job listings cater to international
+                    students and professionals.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="userque">
+          <h2 class="userquehead">DROP YOUR QUERIES</h2>
+          <input class="quearea" type="textarea" placeholder="If you have any question, let us know...">
+          <button class="quesend">Send</button>
+        </div>
+      </section>
+
+    <script src="/scripts/componentLoader.js"></script>
+    <script>
+      prependComponent("Navbar");
+      prependComponent('Cursor');
+      appendComponent('Footer');
+      appendComponent('ChatBot');
+      waitTillComponentsLoaded();
+    </script>
+
+    <script src="./faqs.js"></script>
+
+    <div class="circle-container">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <style>
+      .circle {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(73, 232, 247, 0.466), rgba(141, 38, 172, 0.5));
+        transition: transform 0.1s, left 0.1s, top 0.1s;
+      }
+  
+      .circle-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+      }
+    </style>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const coords = { x: 0, y: 0 };
+        const circles = document.querySelectorAll(".circle");
+  
+        circles.forEach(function (circle) {
+          circle.x = 0;
+          circle.y = 0;
+        });
+  
+        window.addEventListener("mousemove", function (e) {
+          coords.x = e.pageX;
+          coords.y = e.pageY - window.scrollY; // Adjust for vertical scroll position
+        });
+  
+        function animateCircles() {
+          let x = coords.x;
+          let y = coords.y;
+  
+          circles.forEach(function (circle, index) {
+            circle.style.left = `${x - 12}px`;
+            circle.style.top = `${y - 12}px`;
+            circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+  
+            const nextCircle = circles[index + 1] || circles[0];
+            circle.x = x;
+            circle.y = y;
+  
+            x += (nextCircle.x - x) * 0.3;
+            y += (nextCircle.y - y) * 0.3;
+          });
+  
+          requestAnimationFrame(animateCircles);
+        }
+  
+        animateCircles();
+      });
+  
+  
+    </script>
+  </body>
+</html>
